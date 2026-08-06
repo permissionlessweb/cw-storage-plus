@@ -26,7 +26,7 @@ macro = ["dep:cw-storage-macro"]
 bench = false
 
 [dependencies]
-cosmwasm-std = { git = "https://github.com/permissionlessweb/cosmwasm", branch = "cw3-base-local-freeze", default-features = false, features = ["std"] }
+cosmwasm-std = { path = "../cosmwasm/packages/std", default-features = false, features = ["std"] }
 schemars = "0.8.22"
 serde = { version = "1.0", default-features = false, features = ["derive"] }
 cw-storage-macro = { path = "macros", version = "3.0.1", optional = true }
@@ -41,3 +41,18 @@ derive_more = { version = "2.0.1", features = ["full"] }
 [[bench]]
 name = "main"
 harness = false
+
+[patch.'https://github.com/permissionlessweb/cosmos-rust']
+cosmos-sdk-proto = { path = "../cosmos-rust/cosmos-sdk-proto" }
+cosmrs = { path = "../cosmos-rust/cosmrs" }
+
+[patch.'https://github.com/permissionlessweb/tendermint-rs']
+tendermint = { path = "../tendermint-rs/tendermint" }
+tendermint-abci = { path = "../tendermint-rs/abci" }
+tendermint-config = { path = "../tendermint-rs/config" }
+tendermint-light-client = { path = "../tendermint-rs/light-client" }
+tendermint-light-client-detector = { path = "../tendermint-rs/light-client-detector" }
+tendermint-light-client-verifier = { path = "../tendermint-rs/light-client-verifier" }
+tendermint-proto = { path = "../tendermint-rs/proto" }
+tendermint-rpc = { path = "../tendermint-rs/rpc" }
+tendermint-testgen = { path = "../tendermint-rs/testgen" }
