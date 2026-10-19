@@ -26,7 +26,7 @@ macro = ["dep:cw-storage-macro"]
 bench = false
 
 [dependencies]
-cosmwasm-std = { git = "ssh://returniflost@groot-wan/Users/returniflost/abstract/terp-core/crates/cosmwasm", branch = "v3.1.0-zk.0", package = "cosmwasm-std", default-features = false, features = ["std"] }
+cosmwasm-std = { git = "https://github.com/permissionlessweb/cosmwasm", rev = "e20646e2d9a9c4f93e993eb0656afa795f6e387a", package = "cosmwasm-std", default-features = false, features = ["std"] }
 schemars = "0.8.22"
 serde = { version = "1.0", default-features = false, features = ["derive"] }
 cw-storage-macro = { path = "macros", version = "3.0.1", optional = true }
@@ -42,17 +42,20 @@ derive_more = { version = "2.0.1", features = ["full"] }
 name = "main"
 harness = false
 
+[patch.'https://github.com/permissionlessweb/cosmwasm']
+cosmwasm-std = { path = "../cosmwasm/packages/std", package = "cosmwasm-std" }
+
 [patch.'https://github.com/permissionlessweb/cosmos-rust']
-cosmos-sdk-proto = { git = "ssh://returniflost@groot-wan/Users/returniflost/abstract/terp-core/crates/cosmos-rust", branch = "v3.1.0-zk.0", package = "cosmos-sdk-proto" }
-cosmrs = { git = "ssh://returniflost@groot-wan/Users/returniflost/abstract/terp-core/crates/cosmos-rust", branch = "v3.1.0-zk.0", package = "cosmrs" }
+cosmos-sdk-proto = { path = "../cosmos-rust/cosmos-sdk-proto", package = "cosmos-sdk-proto" }
+cosmrs = { path = "../cosmos-rust/cosmrs", package = "cosmrs" }
 
 [patch.'https://github.com/permissionlessweb/tendermint-rs']
-tendermint = { git = "ssh://returniflost@groot-wan/Users/returniflost/abstract/terp-core/crates/tendermint-rs", branch = "v3.1.0-zk.0", package = "tendermint" }
+tendermint = { path = "../tendermint-rs/tendermint", package = "tendermint" }
 tendermint-abci = { path = "../tendermint-rs/abci" }
 tendermint-config = { path = "../tendermint-rs/config" }
 tendermint-light-client = { path = "../tendermint-rs/light-client" }
 tendermint-light-client-detector = { path = "../tendermint-rs/light-client-detector" }
 tendermint-light-client-verifier = { path = "../tendermint-rs/light-client-verifier" }
-tendermint-proto = { git = "ssh://returniflost@groot-wan/Users/returniflost/abstract/terp-core/crates/tendermint-rs", branch = "v3.1.0-zk.0", package = "tendermint-proto" }
-tendermint-rpc = { git = "ssh://returniflost@groot-wan/Users/returniflost/abstract/terp-core/crates/tendermint-rs", branch = "v3.1.0-zk.0", package = "tendermint-rpc" }
+tendermint-proto = { path = "../tendermint-rs/proto", package = "tendermint-proto" }
+tendermint-rpc = { path = "../tendermint-rs/rpc", package = "tendermint-rpc" }
 tendermint-testgen = { path = "../tendermint-rs/testgen" }
