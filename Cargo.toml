@@ -26,7 +26,7 @@ iterator = ["cosmwasm-std/iterator"]
 macro = ["dep:cw-storage-macro"]
 
 [dependencies]
-cosmwasm-std = { package = "cosmwasm-std", version = "=4.0.0-zk", default-features = false, features = ["std"] }
+cosmwasm-std = { package = "cosmwasm-std", version = "=4.1.0", default-features = false, features = ["std"] }
 cw-storage-macro = { path = "macros", version = "3.0.1", optional = true }
 schemars = "0.8.22"
 serde = { version = "1.0", default-features = false, features = ["derive"] }
@@ -43,4 +43,4 @@ name = "main"
 harness = false
 [patch.crates-io]
 
-cosmwasm-std = { path = "../cosmwasm/packages/std" }
+cosmwasm-std = { git = "https://github.com/permissionlessweb/cosmwasm", rev = "e20646e2d9a9c4f93e993eb0656afa795f6e387a" }
